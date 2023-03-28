@@ -1,77 +1,76 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/operations';
-import { selectContactsItems } from 'redux/selectors';
-import { nanoid } from 'nanoid';
-import { Button } from 'components/Button';
-import { Form, Wrap } from './ContactForm.styled';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contacts/operations';
+import { useContacts } from 'hooks';
+
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { SignupSchema } from './inputValidation';
+import { getDefaultValues } from 'utils/getDefaultValues';
+
+import { Box } from '@mui/system';
+import { FormField } from 'components/FormField';
+import { inputsList } from './inputsList';
+import { CommonButton } from 'components/common/CommonButton';
+
+const defaultValues = getDefaultValues(inputsList);
 
 export const ContactForm = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm({
+    resolver: yupResolver(SignupSchema),
+    defaultValues,
+  });
+  const { contacts } = useContacts();
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContactsItems);
 
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-
-  const nameInputId = nanoid();
-  const numberInputId = nanoid();
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'number':
-        setNumber(value);
-        break;
-      default:
-        return;
-    }
+  const onSubmit = data => {
+    const isInContacts = contacts.find(contact => contact.name === data.name);
+    if (isInContacts) return alert(`${data.name} is aready in contacts.`);
+    dispatch(addContact(data));
+    reset();
   };
 
-  const resetForm = () => {
-    setName('');
-    setNumber('');
+  const isError = inputName => {
+    if (errors[inputName]) return true;
+    return false;
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const isInContacts = contacts.find(contact => contact.name === name);
-    if (isInContacts) return alert(`${name} is aready in contacts.`);
-    dispatch(addContact({ name, number }));
-    resetForm();
-  };
-
+  const getErrorMassage = inputName => errors[inputName].message;
   return (
-    <Form onSubmit={handleSubmit}>
-      <Wrap>
-        <label htmlFor={nameInputId}>Name</label>
-        <input
-          value={name}
-          onChange={handleChange}
-          id={nameInputId}
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
+    <Box
+      component="form"
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
+        width: '400px',
+        margin: '0 auto',
+      }}
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      {inputsList.map(({ inputName, type, id }) => (
+        <FormField
+          key={id}
+          inputName={inputName}
+          type={type}
+          id={id}
+          register={register}
+          isError={isError}
+          getErrorMassage={getErrorMassage}
         />
-      </Wrap>
-      <Wrap>
-        <label htmlFor={numberInputId}>Number</label>
-        <input
-          value={number}
-          onChange={handleChange}
-          id={numberInputId}
-          type="tel"
-          name="number"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-        />
-      </Wrap>
-      <Button type="submit">Add contact</Button>
-    </Form>
+      ))}
+      <Box sx={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+        <CommonButton type="submit" variant="contained">
+          Add Contact
+        </CommonButton>
+        <CommonButton type="button" variant="outlined">
+          Cancel
+        </CommonButton>
+      </Box>
+    </Box>
   );
 };

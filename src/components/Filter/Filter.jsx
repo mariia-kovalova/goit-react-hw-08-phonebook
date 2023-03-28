@@ -1,6 +1,5 @@
-import debounce from 'lodash.debounce';
 import { useDispatch } from 'react-redux';
-import { setFilter } from 'redux/filterSlice';
+import { setFilter } from 'redux/filter/slice';
 import { nanoid } from 'nanoid';
 import { Wrap } from './Filter.styled';
 
@@ -8,8 +7,7 @@ export const Filter = () => {
   const dispatch = useDispatch();
   const filterId = nanoid();
 
-  const handleChange = e =>
-    debounce(dispatch(setFilter(e.currentTarget.value.trim())));
+  const handleChange = e => dispatch(setFilter(e.currentTarget.value.trim()));
 
   return (
     <Wrap>

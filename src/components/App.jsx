@@ -1,18 +1,44 @@
-import { Section } from 'components/Section';
-import { ContactForm } from 'components/ContactForm';
-import { ContactList } from 'components/ContactList';
-import { Filter } from 'components/Filter';
-import { MainTitle } from './GlobalStyles.styled';
+import { lazy, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks';
+import { refreshUser } from 'redux/auth/operations';
+import { SharedLayout } from './SharedLayout';
+import { Loader } from './Loader';
 
-export const App = () => (
-  <main>
-    <MainTitle>Phonebook</MainTitle>
-    <Section>
-      <ContactForm />
-    </Section>
-    <Section title="Contacts">
-      <Filter />
-      <ContactList />
-    </Section>
-  </main>
-);
+const HomeView = lazy(() => import('views/HomeView'));
+const RegisterView = lazy(() => import('views/RegisterView'));
+const LoginView = lazy(() => import('views/LoginView'));
+const ContactsView = lazy(() => import('views/ContactsView'));
+
+export const App = () => {
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <Loader open={isRefreshing} />
+  ) : (
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<HomeView />} />
+        <Route path="register" element={<RegisterView />} />
+        <Route path="login" element={<LoginView />} />
+        <Route path="contacts" element={<ContactsView />} />
+        <Route path="*" element={<HomeView />} />
+      </Route>
+    </Routes>
+  );
+};
+
+// див лекцію репети - підчистити залишки інфо пілся логауту
+// isrefreshing ? === isLoading (знайти аналог isLoading для auth)
+
+// user page view
+// about us page view
+// form add user + icon , modal window
+// убрать дебаунс у 7-му дз
+// не забудь переробити еррор

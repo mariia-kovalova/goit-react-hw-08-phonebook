@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import { Backdrop, CircularProgress } from '@mui/material';
+import PropTypes from 'prop-types';
 
 export const Loader = ({ open }) => (
   <>
