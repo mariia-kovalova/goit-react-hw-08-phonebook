@@ -26,7 +26,10 @@ export const ContactItem = memo(function ContactItem({ contact }) {
       }}
     >
       <Box sx={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-        <Avatar />
+        <Avatar
+          alt="user avatar"
+          src="https://cdn-icons-png.flaticon.com/512/2977/2977285.png"
+        />
         <Box>
           <Typography>{name}</Typography>
           <Typography>{number}</Typography>

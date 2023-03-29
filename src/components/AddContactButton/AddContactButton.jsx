@@ -15,6 +15,9 @@ export const AddContactButton = ({ onOpenModal }) => (
       position: 'fixed',
       top: '80%',
       left: '90%',
+      '&:hover': {
+        bgcolor: 'primary.300',
+      },
     }}
     type="button"
     onClick={onOpenModal}

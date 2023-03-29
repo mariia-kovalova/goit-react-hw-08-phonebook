@@ -16,12 +16,17 @@ export const UserMenu = () => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
       <Avatar
-        alt="Remy Sharp"
+        alt="user avatar"
         src="https://cdn-icons-png.flaticon.com/512/2977/2977285.png"
       />
       <p>{user.email}</p>
       <Button
-        sx={{ color: 'common.white' }}
+        sx={{
+          color: 'common.white',
+          '&:hover': {
+            backgroundColor: 'rgba(0, 0, 0, 0.04)',
+          },
+        }}
         type="button"
         onClick={handleClick}
       >
