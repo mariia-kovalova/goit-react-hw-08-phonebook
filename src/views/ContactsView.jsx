@@ -13,16 +13,20 @@ const ContactsView = () => {
   const toggleModal = () => setShowModal(!showModal);
 
   return (
-    <Section>
-      <Filter />
-      <ContactList />
-      <AddContactButton onOpenModal={toggleModal} />
+    <>
+      <Section>
+        <Filter />
+      </Section>
+      <Section>
+        <ContactList />
+        <AddContactButton onOpenModal={toggleModal} />
+      </Section>
       {showModal && (
         <ModalWindow onModalClose={toggleModal}>
           <ContactForm onModalClose={toggleModal} />
         </ModalWindow>
       )}
-    </Section>
+    </>
   );
 };
 

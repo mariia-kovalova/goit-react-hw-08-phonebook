@@ -3,9 +3,8 @@ import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 import PropTypes from 'prop-types';
 
-import { IconButton } from '@mui/material';
+import { Avatar, Box, IconButton, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Item } from './ContactItem.styled';
 
 export const ContactItem = memo(function ContactItem({ contact }) {
   const dispatch = useDispatch();
@@ -15,14 +14,28 @@ export const ContactItem = memo(function ContactItem({ contact }) {
   const { id, name, number } = contact;
 
   return (
-    <Item>
-      <p>
-        {name}: {number}
-      </p>
+    <Box
+      component="li"
+      sx={{
+        padding: '10px',
+        bgcolor: 'primary.50',
+        borderRadius: '4px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}
+    >
+      <Box sx={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+        <Avatar />
+        <Box>
+          <Typography>{name}</Typography>
+          <Typography>{number}</Typography>
+        </Box>
+      </Box>
       <IconButton aria-label="delete" onClick={handleDelete}>
         <DeleteIcon />
       </IconButton>
-    </Item>
+    </Box>
   );
 });
 

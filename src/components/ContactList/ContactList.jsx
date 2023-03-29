@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectFilter } from 'redux/filter/selectors';
-import { ContactItem } from 'components/ContactItem';
-import { List } from './ContactList.styled';
-import { Loader } from 'components/Loader';
-import { Error } from 'components/Error';
 import { fetchContacts } from 'redux/contacts/operations';
+import { useDispatch, useSelector } from 'react-redux';
 import { useContacts } from 'hooks';
+import { selectFilter } from 'redux/filter/selectors';
+
+import { ContactItem } from 'components/ContactItem';
+import { Loader } from 'components/Loader';
+import { InfoText } from 'components/InfoText';
+import { List } from '@mui/material';
 
 export const ContactList = () => {
   const { isLoading, error, contacts } = useContacts();
@@ -21,16 +22,22 @@ export const ContactList = () => {
   const showError = !isLoading && error;
   const empty = isOk && filter === '' && contacts.length === 0;
   const noMatches = isOk && filter !== '' && contacts.length === 0;
-  const showList = isOk && contacts.length !== 0;
+  const showList = !error && contacts.length !== 0;
 
   return (
     <>
       {isLoading && <Loader open={isLoading} />}
-      {showError && <Error>Sorry, something went wrong.</Error>}
-      {empty && <Error>Your contacts list is empty.</Error>}
-      {noMatches && <Error>Sorry, there is no such contacs</Error>}
+      {showError && <InfoText>Sorry, something went wrong.</InfoText>}
+      {empty && <InfoText>Your contacts list is empty.</InfoText>}
+      {noMatches && <InfoText>Sorry, there is no such contacs</InfoText>}
       {showList && (
-        <List>
+        <List
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '10px',
+          }}
+        >
           {contacts.map(contact => (
             <ContactItem key={contact.id} contact={contact} />
           ))}
