@@ -7,9 +7,9 @@ import { SignupSchema } from './inputValidation';
 import { getDefaultValues } from 'utils/getDefaultValues';
 
 import { Box } from '@mui/system';
-import { FormField } from 'components/common/FormField';
+import { FormField } from 'components/FormField';
 import { inputsList } from './inputsList';
-import { CommonButton } from 'components/common/CommonButton';
+import { Button } from '@mui/material';
 
 const defaultValues = getDefaultValues(inputsList);
 
@@ -60,9 +60,9 @@ export const RegisterForm = () => {
           getErrorMassage={getErrorMassage}
         />
       ))}
-      <CommonButton type="submit" fullWidth variant="contained">
+      <Button type="submit" fullWidth variant="contained">
         Register
-      </CommonButton>
+      </Button>
     </Box>
   );
 };

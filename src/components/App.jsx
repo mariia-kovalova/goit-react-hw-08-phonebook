@@ -1,8 +1,12 @@
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivatRoute';
+
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks';
 import { refreshUser } from 'redux/auth/operations';
+
 import { SharedLayout } from './SharedLayout';
 import { Loader } from './Loader';
 
@@ -25,28 +29,44 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomeView />} />
-        <Route path="register" element={<RegisterView />} />
-        <Route path="login" element={<LoginView />} />
-        <Route path="contacts" element={<ContactsView />} />
+        <Route
+          path="register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterView />}
+            />
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginView />} />
+          }
+        />
+        <Route
+          path="contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsView />} />
+          }
+        />
         <Route path="*" element={<HomeView />} />
       </Route>
     </Routes>
   );
 };
 
-// питання на леекцію - відновлення паролю
+// питання на леекцію - відновлення паролю (backend), як краще створити баттон з mui - затянути в одну папаку, чи в кожну затягувати по одному
 
-// глазик на пароль
-// loader - dots
-// показувати помилку при логіні - неправильний паоль чи логін
-
-// див лекцію репети - підчистити залишки інфо пілся логауту
-// isrefreshing ? === isLoading (знайти аналог isLoading для auth)
+// skeleton (on contacts load)
+// показувати помилку при логіні - неправильний пароль чи логін
+// прикол з полями, коли прилітає помилка з серверу
 
 // user page view
-// form add user + icon , modal window
+// form add user + icon , modal window - hover
 // убрать дебаунс у 7-му дз
 // не забудь переробити еррор
 // переробити контакти
 // footer
 // запитати що робити з логіном - переносом
+// mb темна тема

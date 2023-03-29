@@ -4,7 +4,7 @@ import { selectFilter } from 'redux/filter/selectors';
 import { ContactItem } from 'components/ContactItem';
 import { List } from './ContactList.styled';
 import { Loader } from 'components/Loader';
-import { Error } from 'components/common/Error';
+import { Error } from 'components/Error';
 import { fetchContacts } from 'redux/contacts/operations';
 import { useContacts } from 'hooks';
 

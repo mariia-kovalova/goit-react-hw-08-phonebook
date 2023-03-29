@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 import PropTypes from 'prop-types';
 
-import { CommonIconButton } from 'components/common/CommonIconButton';
+import { IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Item } from './ContactItem.styled';
 
@@ -19,9 +19,9 @@ export const ContactItem = memo(function ContactItem({ contact }) {
       <p>
         {name}: {number}
       </p>
-      <CommonIconButton aria-label="delete" onClick={handleDelete}>
+      <IconButton aria-label="delete" onClick={handleDelete}>
         <DeleteIcon />
-      </CommonIconButton>
+      </IconButton>
     </Item>
   );
 });

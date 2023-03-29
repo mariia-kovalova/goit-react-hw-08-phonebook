@@ -1,6 +1,6 @@
 import { Box, Avatar, Link, Typography } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { Section } from 'components/common/Section';
+import { Section } from 'components/Section';
 import { RegisterForm } from 'components/RegisterForm';
 import { StyledLink } from 'components/GlobalStyles.styled';
 
@@ -9,7 +9,7 @@ const RegisterView = () => {
     <Section>
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 6,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',

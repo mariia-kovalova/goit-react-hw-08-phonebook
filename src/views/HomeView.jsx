@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { Section } from 'components/common/Section';
+import { Section } from 'components/Section';
 
 const HomeView = () => {
   return (

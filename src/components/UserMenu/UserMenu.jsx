@@ -2,13 +2,16 @@ import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 
-import { Avatar, Box } from '@mui/material';
+import { Avatar, Box, Button } from '@mui/material';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import { CommonButton } from 'components/common/CommonButton';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
+
+  const handleClick = () => {
+    dispatch(logOut());
+  };
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -17,14 +20,14 @@ export const UserMenu = () => {
         src="https://cdn-icons-png.flaticon.com/512/2977/2977285.png"
       />
       <p>{user.email}</p>
-      <CommonButton
+      <Button
         sx={{ color: 'common.white' }}
         type="button"
-        onClick={() => dispatch(logOut())}
+        onClick={handleClick}
       >
-        <span>Logout</span>
+        <span>Log out</span>
         <ExitToAppIcon />
-      </CommonButton>
+      </Button>
     </Box>
   );
 };

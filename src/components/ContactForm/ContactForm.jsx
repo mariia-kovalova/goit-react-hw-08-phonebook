@@ -7,10 +7,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { SignupSchema } from './inputValidation';
 import { getDefaultValues } from 'utils/getDefaultValues';
 
-import { Box } from '@mui/system';
-import { FormField } from 'components/common/FormField';
+import { Box, Button } from '@mui/material';
+import { FormField } from 'components/FormField';
 import { inputsList } from './inputsList';
-import { CommonButton } from 'components/common/CommonButton';
 
 const defaultValues = getDefaultValues(inputsList);
 
@@ -64,12 +63,12 @@ export const ContactForm = () => {
         />
       ))}
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
-        <CommonButton type="submit" variant="contained">
+        <Button type="submit" variant="contained">
           Add Contact
-        </CommonButton>
-        <CommonButton type="button" variant="outlined">
+        </Button>
+        <Button type="button" variant="outlined">
           Cancel
-        </CommonButton>
+        </Button>
       </Box>
     </Box>
   );

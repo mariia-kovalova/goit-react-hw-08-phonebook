@@ -6,10 +6,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { SignupSchema } from './inputValidation';
 import { getDefaultValues } from 'utils/getDefaultValues';
 
-import { Box } from '@mui/system';
-import { FormField } from 'components/common/FormField';
+import { Box, Button } from '@mui/material';
+import { FormField } from 'components/FormField';
 import { inputsList } from './inputsList';
-import { CommonButton } from 'components/common/CommonButton';
 
 const defaultValues = getDefaultValues(inputsList);
 
@@ -59,9 +58,9 @@ export const LoginForm = () => {
           getErrorMassage={getErrorMassage}
         />
       ))}
-      <CommonButton type="submit" fullWidth variant="contained">
+      <Button type="submit" fullWidth variant="contained">
         Log in
-      </CommonButton>
+      </Button>
     </Box>
   );
 };

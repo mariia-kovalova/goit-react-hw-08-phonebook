@@ -1,4 +1,4 @@
-import { Section } from 'components/common/Section';
+import { Section } from 'components/Section';
 import { Box, Avatar, Link, Typography } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
@@ -10,7 +10,7 @@ const LoginView = () => {
     <Section>
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 6,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
