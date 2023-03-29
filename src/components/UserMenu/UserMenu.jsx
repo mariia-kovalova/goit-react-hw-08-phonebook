@@ -14,7 +14,14 @@ export const UserMenu = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        justifyContent: 'space-between',
+      }}
+    >
       <Avatar
         alt="user avatar"
         src="https://cdn-icons-png.flaticon.com/512/2977/2977285.png"
@@ -22,7 +29,14 @@ export const UserMenu = () => {
       <p>{user.email}</p>
       <Button
         sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '4px',
           color: 'common.white',
+          textTransform: 'none',
+          fontFamily: 'Roboto',
+          fontWeight: '400',
+          fontSize: '1rem',
           '&:hover': {
             backgroundColor: 'rgba(0, 0, 0, 0.04)',
           },

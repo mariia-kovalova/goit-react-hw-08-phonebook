@@ -56,11 +56,13 @@ export const App = () => {
   );
 };
 
-// mb:
+// ideas:
 
 // показувати помилку при логіні - неправильний пароль чи логін - обробка помилок
+// random pictures for users (hw 1 react)
 // skeleton (on first contacts load)
 // темна тема
 // user page view
+// log in with google
 
 // убрать дебаунс у 7-му дз
