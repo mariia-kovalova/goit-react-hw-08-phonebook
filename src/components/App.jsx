@@ -38,7 +38,8 @@ export const App = () => {
 // isrefreshing ? === isLoading (знайти аналог isLoading для auth)
 
 // user page view
-// about us page view
 // form add user + icon , modal window
 // убрать дебаунс у 7-му дз
 // не забудь переробити еррор
+// переробити крнтакти
+// footer
