@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { persistor, store } from 'redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { App } from 'components/App';
+import { Loader } from 'components/Loader';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material';
 import { theme } from 'theam/theam';
@@ -17,13 +18,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <BrowserRouter basename="goit-react-hw-08-phonebook">
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
+      <Provider store={store}>
+        <PersistGate loading={<Loader open={true} />} persistor={persistor}>
+          <BrowserRouter basename="goit-react-hw-08-phonebook">
             <App />
-          </PersistGate>
-        </Provider>
-      </BrowserRouter>
+          </BrowserRouter>
+        </PersistGate>
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>
 );
