@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { capitalize } from 'utils/capitalize';
 import {
   FormControl,
@@ -29,4 +30,13 @@ export const FormField = ({
       )}
     </FormControl>
   );
+};
+
+FormField.propTypes = {
+  inputName: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  register: PropTypes.func.isRequired,
+  isError: PropTypes.func.isRequired,
+  getErrorMassage: PropTypes.func.isRequired,
 };

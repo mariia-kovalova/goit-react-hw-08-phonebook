@@ -27,6 +27,7 @@ export const RegisterForm = () => {
 
   const onSubmit = data => {
     dispatch(registration(data));
+    console.log(data);
     reset();
   };
 

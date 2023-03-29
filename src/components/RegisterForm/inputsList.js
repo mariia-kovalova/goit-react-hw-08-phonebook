@@ -6,7 +6,7 @@ const passwordInputId = nanoid();
 
 export const inputsList = [
   {
-    inputName: 'username',
+    inputName: 'name',
     type: 'text',
     id: usernameInputId,
   },
