@@ -11,9 +11,11 @@ import { Box, Button } from '@mui/material';
 import { FormField } from 'components/FormField';
 import { inputsList } from './inputsList';
 
+import PropTypes from 'prop-types';
+
 const defaultValues = getDefaultValues(inputsList);
 
-export const ContactForm = () => {
+export const ContactForm = ({ onModalClose }) => {
   const {
     register,
     formState: { errors },
@@ -31,6 +33,7 @@ export const ContactForm = () => {
     if (isInContacts) return alert(`${data.name} is aready in contacts.`);
     dispatch(addContact(data));
     reset();
+    onModalClose();
   };
 
   const isError = inputName => {
@@ -66,10 +69,14 @@ export const ContactForm = () => {
         <Button type="submit" variant="contained">
           Add Contact
         </Button>
-        <Button type="button" variant="outlined">
+        <Button type="button" variant="outlined" onClick={() => onModalClose()}>
           Cancel
         </Button>
       </Box>
     </Box>
   );
+};
+
+ContactForm.propTypes = {
+  onModalClose: PropTypes.func.isRequired,
 };

@@ -23,7 +23,7 @@ export const Footer = () => (
       >
         <Copyright />
         <Typography> Developed with</Typography>
-        <FavoriteIcon sx={{ color: 'common.white' }} />
+        <FavoriteIcon sx={{ color: 'extra.pink.400' }} />
         <Typography>by</Typography>
         <Link href="https://github.com/mariia-kovalova">Mariia Kovalova</Link>
       </Box>

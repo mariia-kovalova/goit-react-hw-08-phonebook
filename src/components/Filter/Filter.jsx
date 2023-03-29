@@ -1,18 +1,32 @@
 import { useDispatch } from 'react-redux';
 import { setFilter } from 'redux/filter/slice';
 import { nanoid } from 'nanoid';
-import { Wrap } from './Filter.styled';
+import { Box, FormControl, InputLabel, OutlinedInput } from '@mui/material';
+
+const filterId = nanoid();
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filterId = nanoid();
 
   const handleChange = e => dispatch(setFilter(e.currentTarget.value.trim()));
 
   return (
-    <Wrap>
-      <label htmlFor={filterId}>Find contacts by name</label>
-      <input type="text" id={filterId} onChange={handleChange}></input>
-    </Wrap>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <FormControl sx={{ width: '350px' }}>
+        <InputLabel htmlFor={filterId}>Search</InputLabel>
+        <OutlinedInput
+          id={filterId}
+          type="text"
+          label="Search"
+          onChange={handleChange}
+        />
+      </FormControl>
+    </Box>
   );
 };

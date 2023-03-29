@@ -1,21 +1,28 @@
-import { AddContactButton } from 'components/AddContactButton';
+import { useState } from 'react';
+
 import { Section } from 'components/Section';
-import { ContactForm } from 'components/ContactForm';
 import { ContactList } from 'components/ContactList';
 import { Filter } from 'components/Filter';
+import { AddContactButton } from 'components/AddContactButton';
+import { ModalWindow } from 'components/ModalWindow';
+import { ContactForm } from 'components/ContactForm';
 
 const ContactsView = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => setShowModal(!showModal);
+
   return (
-    <>
-      <Section>
-        <ContactForm />
-      </Section>
-      <Section title="Contacts">
-        <Filter />
-        <ContactList />
-        <AddContactButton />
-      </Section>
-    </>
+    <Section>
+      <Filter />
+      <ContactList />
+      <AddContactButton onOpenModal={toggleModal} />
+      {showModal && (
+        <ModalWindow onModalClose={toggleModal}>
+          <ContactForm onModalClose={toggleModal} />
+        </ModalWindow>
+      )}
+    </Section>
   );
 };
 
