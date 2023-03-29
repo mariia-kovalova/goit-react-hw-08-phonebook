@@ -29,7 +29,7 @@ export const ContactList = () => {
       {isLoading && <Loader open={isLoading} />}
       {showError && <InfoText>Sorry, something went wrong</InfoText>}
       {empty && <InfoText>Your contacts list is empty</InfoText>}
-      {noMatches && <InfoText>Sorry, there is no such contacs</InfoText>}
+      {noMatches && <InfoText>Sorry, there is no such contacts</InfoText>}
       {showList && (
         <List
           sx={{
