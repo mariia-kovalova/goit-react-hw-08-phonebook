@@ -1,6 +1,6 @@
 import { useAuth } from 'hooks';
 import { List, ListItemButton, Toolbar } from '@mui/material';
-import { StyledListItem, StyledNavLink } from './Navigation.styled';
+import { StyledNavLink } from './Navigation.styled';
 import { LinksList } from './linksList';
 
 export const Navigation = () => {
@@ -10,11 +10,11 @@ export const Navigation = () => {
       <List sx={{ display: 'flex' }}>
         {LinksList(isLoggedIn).map(({ path, page, render }) =>
           render ? (
-            <StyledListItem key={page}>
+            <li key={page}>
               <ListItemButton component={StyledNavLink} to={path}>
                 {page}
               </ListItemButton>
-            </StyledListItem>
+            </li>
           ) : (
             ''
           )

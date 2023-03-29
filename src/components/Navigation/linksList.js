@@ -17,7 +17,7 @@ export const LinksList = isLoggedIn => {
     },
     {
       path: '/login',
-      page: 'Login',
+      page: 'Log in',
       render: !isLoggedIn,
     },
   ];

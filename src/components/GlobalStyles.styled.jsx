@@ -3,7 +3,7 @@ import { List } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export const Main = styled.main`
-  min-height: calc(100vh - 146px);
+  min-height: calc(100vh - 136px);
 `;
 
 export const StyledList = styled(List)`
