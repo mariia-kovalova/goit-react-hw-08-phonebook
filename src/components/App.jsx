@@ -62,6 +62,6 @@ export const App = () => {
 
 // темна тема
 // user page view
-// log in with google ???
+// log in with google
 
 // убрать дебаунс у 7-му дз
