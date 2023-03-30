@@ -6,12 +6,15 @@ import PropTypes from 'prop-types';
 import { Avatar, Box, IconButton, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+import avatarsList from './avatarsList.json';
+import { getRandomAvatar } from 'utils/getRandomAvatar';
+
 export const ContactItem = memo(function ContactItem({ contact }) {
+  const { id, name, number } = contact;
   const dispatch = useDispatch();
+  const avatar = getRandomAvatar(avatarsList);
 
   const handleDelete = () => dispatch(deleteContact(id));
-
-  const { id, name, number } = contact;
 
   return (
     <Box
@@ -26,10 +29,7 @@ export const ContactItem = memo(function ContactItem({ contact }) {
       }}
     >
       <Box sx={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-        <Avatar
-          alt="user avatar"
-          src="https://cdn-icons-png.flaticon.com/512/2977/2977285.png"
-        />
+        <Avatar alt={avatar.alt} src={avatar.src} />
         <Box>
           <Typography>{name}</Typography>
           <Typography>{number}</Typography>
