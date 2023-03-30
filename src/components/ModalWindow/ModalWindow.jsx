@@ -16,7 +16,7 @@ export const ModalWindow = ({ children, onModalClose }) => {
           padding: '20px',
           borderRadius: '3px',
           position: 'absolute',
-          top: '50%',
+          top: { xs: '35%', sm: '50%' },
           left: '50%',
           transform: 'translate(-50%, -50%)',
         }}

@@ -14,7 +14,7 @@ export const Logo = () => (
     }}
   >
     <PersonPinIcon fontSize="large" />
-    <Typography component="span" variant="h4" sx={{ padding: '8px' }}>
+    <Typography component="span" variant="h4" sx={{ padding: '11px' }}>
       PhoneBook
     </Typography>
   </Box>
