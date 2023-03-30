@@ -6,13 +6,9 @@ import PropTypes from 'prop-types';
 import { Avatar, Box, IconButton, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import avatarsList from './avatarsList.json';
-import { getRandomAvatar } from 'utils/getRandomAvatar';
-
 export const ContactItem = memo(function ContactItem({ contact }) {
-  const { id, name, number } = contact;
+  const { id, name, number, avatar } = contact;
   const dispatch = useDispatch();
-  const avatar = getRandomAvatar(avatarsList);
 
   const handleDelete = () => dispatch(deleteContact(id));
 
