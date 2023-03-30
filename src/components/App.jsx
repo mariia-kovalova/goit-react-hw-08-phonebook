@@ -24,7 +24,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <Loader open={isRefreshing} />
+    <Loader type="dark" />
   ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
@@ -59,8 +59,8 @@ export const App = () => {
 // ideas:
 
 // показувати помилку при логіні - неправильний пароль чи логін - обробка помилок
-// random pictures for users (hw 1 react)
-// skeleton (on first contacts load)
+
+// skeleton (on first contacts load) - ??? + loder proptypes one of light dark
 // темна тема
 // user page view
 // log in with google

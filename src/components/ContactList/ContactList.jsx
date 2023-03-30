@@ -26,7 +26,7 @@ export const ContactList = () => {
 
   return (
     <>
-      {isLoading && <Loader open={isLoading} />}
+      {isLoading && <Loader />}
       {showError && <InfoText>Sorry, something went wrong</InfoText>}
       {empty && <InfoText>Your contacts list is empty</InfoText>}
       {noMatches && <InfoText>Sorry, there is no such contacts</InfoText>}
