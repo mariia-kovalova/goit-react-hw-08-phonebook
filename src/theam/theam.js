@@ -3,6 +3,7 @@ import { pink, teal } from '@mui/material/colors';
 
 export const theme = createTheme({
   palette: {
+    mode: 'light',
     primary: teal,
     secondary: teal,
     extra: {
@@ -10,3 +11,5 @@ export const theme = createTheme({
     },
   },
 });
+
+console.log(theme);

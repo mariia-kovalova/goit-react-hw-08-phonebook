@@ -60,9 +60,8 @@ export const App = () => {
 
 // показувати помилку при логіні - неправильний пароль чи логін - обробка помилок
 
-// skeleton (on first contacts load) - ??? + loder proptypes one of light dark
 // темна тема
 // user page view
-// log in with google
+// log in with google ???
 
 // убрать дебаунс у 7-му дз

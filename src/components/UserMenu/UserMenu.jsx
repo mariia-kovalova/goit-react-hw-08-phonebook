@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 
-import { Avatar, Box, Button } from '@mui/material';
+import { Avatar, Box, Button, Typography } from '@mui/material';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 export const UserMenu = () => {
@@ -25,11 +25,14 @@ export const UserMenu = () => {
       <Avatar
         alt="user avatar"
         src="https://cdn-icons-png.flaticon.com/512/2977/2977285.png"
+        sx={{ margin: '5px 0' }}
       />
-      <p>{user.email}</p>
+      <Typography sx={{ display: { xs: 'none', md: 'block' } }}>
+        {user.email}
+      </Typography>
       <Button
         sx={{
-          display: 'flex',
+          display: { xs: 'none', md: 'flex' },
           alignItems: 'center',
           gap: '4px',
           color: 'common.white',
@@ -44,7 +47,7 @@ export const UserMenu = () => {
         type="button"
         onClick={handleClick}
       >
-        <span>Log out</span>
+        <Typography>Log out</Typography>
         <ExitToAppIcon />
       </Button>
     </Box>

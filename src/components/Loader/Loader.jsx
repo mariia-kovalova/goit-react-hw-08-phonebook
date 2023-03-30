@@ -24,5 +24,5 @@ export const Loader = ({ type = 'light' }) => {
 };
 
 Loader.propTypes = {
-  type: PropTypes.string,
+  type: PropTypes.oneOf(['light', 'dark']),
 };

@@ -7,6 +7,6 @@ export const StyledNavLink = styled(NavLink)`
   color: white;
 
   &.active {
-    border-bottom: 2px solid white;
+    color: teal;
   }
 `;

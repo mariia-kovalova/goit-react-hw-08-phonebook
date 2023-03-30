@@ -49,7 +49,7 @@ export const ContactForm = ({ onModalClose }) => {
         display: 'flex',
         flexDirection: 'column',
         gap: '20px',
-        width: '400px',
+        width: { xs: '330px', sm: '400px' },
         margin: '0 auto',
       }}
       onSubmit={handleSubmit(onSubmit)}
