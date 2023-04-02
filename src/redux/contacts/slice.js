@@ -5,6 +5,7 @@ import {
   deleteContact,
   fetchContacts,
   contactsActions,
+  updateContact,
 } from './operations';
 
 const getActions = type => contactsActions.map(action => action[type]);
@@ -25,6 +26,14 @@ const contactsSlice = createSlice({
       })
       .addCase(addContact.fulfilled, (state, { payload }) => {
         state.items.push(payload);
+      })
+      .addCase(updateContact.fulfilled, (state, { payload }) => {
+        state.items = state.items.map(item => {
+          if (item.id === payload.id) {
+            return payload;
+          }
+          return item;
+        });
       })
       .addCase(deleteContact.fulfilled, (state, { payload }) => {
         const index = state.items.findIndex(item => item.id === payload.id);

@@ -16,7 +16,7 @@ export const Loader = ({ type = 'light' }) => {
   ) : (
     <Backdrop
       sx={{ color: '#fff', zIndex: theme => theme.zIndex.drawer + 1 }}
-      open={true}
+      open
     >
       <CircularProgress color="inherit" />
     </Backdrop>

@@ -58,6 +58,14 @@ export const App = () => {
 
 // ideas:
 
+// всі елементи із Material UI
+// стилі в окремі файли
+// form element ??
+// consts folder (fot validation and listItems files) e.g. https://github.com/theatypicaldeveloper/materialUi-in-react/tree/lesson-4-common-components-completed/src/components/Navbar
+// cards mui for contacts
+// required to the inputs
+// toast instead og alerts + on Success
+
 // показувати помилку при логіні/реєстрації - bad request- обробка помилок
 // темна тема
 // user page view

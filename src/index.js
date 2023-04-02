@@ -7,7 +7,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { App } from 'components/App';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material';
-import { theme } from 'theam/theam';
+import { theme } from 'components/theam';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';

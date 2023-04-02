@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export const ModalWindow = ({ children, onModalClose }) => {
   return (
     <Modal
-      open={true}
+      open
       onClose={onModalClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
