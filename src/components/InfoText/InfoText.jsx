@@ -1,12 +1,10 @@
 import { Typography } from '@mui/material';
 import PropTypes from 'prop-types';
+import { styles } from './InfoTextStyles';
 
-export const InfoText = ({ children, color }) => {
+export const InfoText = ({ children, color = 'common.black' }) => {
   return (
-    <Typography
-      component="p"
-      sx={{ color, textAlign: 'center', padding: '30px' }}
-    >
+    <Typography component="p" sx={{ ...styles.text, color }}>
       {children}
     </Typography>
   );

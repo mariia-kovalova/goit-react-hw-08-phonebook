@@ -4,18 +4,18 @@ import { useContacts } from 'hooks';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { SignupSchema } from './inputValidation';
+import { SignupSchema } from './consts/inputValidation';
 import { getDefaultValues } from 'utils/getDefaultValues';
 
 import { Box, Button } from '@mui/material';
 import { FormField } from 'components/FormField';
-import { inputsList } from './inputsList';
+import { inputsList } from './consts/inputsList';
 
 import PropTypes from 'prop-types';
 
 const defaultValues = getDefaultValues(inputsList);
 
-export const ContactForm = ({ onModalClose }) => {
+export const AddContactForm = ({ onModalClose }) => {
   const {
     register,
     formState: { errors },
@@ -77,6 +77,6 @@ export const ContactForm = ({ onModalClose }) => {
   );
 };
 
-ContactForm.propTypes = {
+AddContactForm.propTypes = {
   onModalClose: PropTypes.func.isRequired,
 };

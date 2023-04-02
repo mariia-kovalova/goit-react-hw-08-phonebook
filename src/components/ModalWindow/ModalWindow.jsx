@@ -1,5 +1,6 @@
 import { Box, Modal } from '@mui/material';
 import PropTypes from 'prop-types';
+import { styles } from './ModalWindowStyles';
 
 export const ModalWindow = ({ children, onModalClose }) => {
   return (
@@ -9,20 +10,7 @@ export const ModalWindow = ({ children, onModalClose }) => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box
-        sx={{
-          display: 'inline-flex',
-          bgcolor: 'common.white',
-          padding: '20px',
-          borderRadius: '3px',
-          position: 'absolute',
-          top: { xs: '35%', sm: '50%' },
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-        }}
-      >
-        {children}
-      </Box>
+      <Box sx={styles.wrap}>{children}</Box>
     </Modal>
   );
 };

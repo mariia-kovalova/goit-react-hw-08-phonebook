@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
-import { linksList } from './linksList';
+import { linksList } from './consts/linksList';
 import PropTypes from 'prop-types';
 
 import {
@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { StyledNavLink } from './MobileMenu.styled';
+import { styles } from './MobileMenuStyles';
 
 export const MobileMenu = ({ onMenuClose }) => {
   const dispatch = useDispatch();
@@ -32,45 +33,30 @@ export const MobileMenu = ({ onMenuClose }) => {
         ModalProps={{
           keepMounted: true,
         }}
-        sx={{
-          display: { xs: 'block', sm: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: '280px' },
-        }}
+        sx={styles.drawer}
       >
-        <Box
-          onClick={() => onMenuClose()}
-          sx={{ textAlign: 'center', position: 'relative' }}
-        >
-          <IconButton
-            onClick={onMenuClose}
-            sx={{ position: 'absolute', right: '10px' }}
-          >
+        <Box onClick={() => onMenuClose()} sx={styles.wrap}>
+          <IconButton onClick={onMenuClose} sx={styles.closeBtn}>
             <CloseIcon />
           </IconButton>
           <List>
             {linksList(isLoggedIn).map(({ path, page, render }) =>
               render ? (
-                <li key={page}>
-                  <ListItemButton
-                    component={StyledNavLink}
-                    sx={{ textAlign: 'center' }}
-                    to={path}
-                  >
+                <Box component="li" key={page}>
+                  <ListItemButton component={StyledNavLink} to={path}>
                     {page}
                   </ListItemButton>
-                </li>
+                </Box>
               ) : (
                 ''
               )
             )}
             {isLoggedIn && (
-              <li>
-                <istItemButton type="button" onClick={handleClick}>
-                  <Typography sx={{ textAlign: 'left', padding: '8px 16px' }}>
-                    Log out
-                  </Typography>
-                </istItemButton>
-              </li>
+              <Box component="li">
+                <ListItemButton type="button" onClick={handleClick}>
+                  <Typography>Log out</Typography>
+                </ListItemButton>
+              </Box>
             )}
           </List>
         </Box>

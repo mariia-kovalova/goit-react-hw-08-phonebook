@@ -8,6 +8,7 @@ import { ContactItem } from 'components/ContactItem';
 import { Loader } from 'components/Loader';
 import { InfoText } from 'components/InfoText';
 import { List } from '@mui/material';
+import { styles } from './ContactListStyles';
 
 export const ContactList = () => {
   const { isLoading, error, contacts } = useContacts();
@@ -28,13 +29,7 @@ export const ContactList = () => {
     <>
       {isLoading && <Loader />}
       {showList && (
-        <List
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '10px',
-          }}
-        >
+        <List sx={styles.list}>
           {contacts.map(contact => (
             <ContactItem key={contact.id} contact={contact} />
           ))}

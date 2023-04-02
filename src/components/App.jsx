@@ -65,6 +65,7 @@ export const App = () => {
 // cards mui for contacts
 // required to the inputs
 // toast instead og alerts + on Success
+// tooltips for icons
 
 // показувати помилку при логіні/реєстрації - bad request- обробка помилок
 // темна тема

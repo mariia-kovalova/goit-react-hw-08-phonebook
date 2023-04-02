@@ -1,23 +1,14 @@
 import { Backdrop, Box, CircularProgress } from '@mui/material';
 import PropTypes from 'prop-types';
+import { styles } from './LoaderStyles';
 
 export const Loader = ({ type = 'light' }) => {
   return type === 'light' ? (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-      }}
-    >
+    <Box sx={styles.wrap}>
       <CircularProgress color="secondary" />
     </Box>
   ) : (
-    <Backdrop
-      sx={{ color: '#fff', zIndex: theme => theme.zIndex.drawer + 1 }}
-      open
-    >
+    <Backdrop sx={styles.backdrop} open>
       <CircularProgress color="inherit" />
     </Backdrop>
   );

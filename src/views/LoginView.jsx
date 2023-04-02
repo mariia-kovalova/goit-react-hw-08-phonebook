@@ -3,7 +3,7 @@ import { Box, Avatar, Link, Typography } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 import { LoginForm } from 'components/LoginForm';
-import { StyledLink } from 'components/GlobalStyles.styled';
+import { StyledRouterLink } from 'components/GlobalStyles.styled';
 
 const LoginView = () => {
   return (
@@ -23,7 +23,7 @@ const LoginView = () => {
           Sign in
         </Typography>
         <LoginForm />
-        <Link component={StyledLink} sx={{ mt: 3 }} to="/register">
+        <Link component={StyledRouterLink} sx={{ mt: 3 }} to="/register">
           Don't have an account? Register
         </Link>
       </Box>

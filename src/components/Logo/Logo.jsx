@@ -1,20 +1,12 @@
 import { Box, Typography } from '@mui/material';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 import { Link } from 'react-router-dom';
+import { styles } from './LogoStyles';
 
 export const Logo = () => (
-  <Box
-    component={Link}
-    to="/"
-    sx={{
-      display: 'flex',
-      alignItems: 'center',
-      color: 'common.white',
-      textDecoration: 'none',
-    }}
-  >
+  <Box component={Link} to="/" sx={styles.wrap}>
     <PersonPinIcon fontSize="large" />
-    <Typography component="span" variant="h4" sx={{ padding: '11px' }}>
+    <Typography component="span" variant="h4">
       PhoneBook
     </Typography>
   </Box>

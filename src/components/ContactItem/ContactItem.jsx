@@ -8,6 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { ModalWindow } from 'components/ModalWindow';
 import { UpdateContactForm } from 'components/UpdateContactForm';
+import { styles } from './ContactItemStyles';
 
 export const ContactItem = memo(function ContactItem({ contact }) {
   const [showModal, setShowModal] = useState(false);
@@ -19,28 +20,15 @@ export const ContactItem = memo(function ContactItem({ contact }) {
 
   return (
     <>
-      <Box
-        component="li"
-        sx={{
-          padding: '10px',
-          bgcolor: 'primary.50',
-          borderRadius: '4px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}
-      >
-        <Box sx={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+      <Box component="li" sx={styles.item}>
+        <Box sx={styles.itemContentWrap}>
           <Avatar alt={avatar.alt} src={avatar.src} />
           <Box>
             <Typography>{name}</Typography>
             <Typography>{number}</Typography>
           </Box>
         </Box>
-        <Box
-          component="ul"
-          sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}
-        >
+        <Box component="ul" sx={styles.btnList}>
           <IconButton aria-label="update" onClick={handleToggleModal}>
             <EditIcon />
           </IconButton>

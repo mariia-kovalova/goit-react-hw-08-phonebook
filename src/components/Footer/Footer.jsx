@@ -1,37 +1,16 @@
 import { Box, Container, Link, Typography } from '@mui/material';
 import { Copyright } from 'components/Copyright';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { styles } from './FooterStyles';
 
 export const Footer = () => (
-  <Box
-    component="footer"
-    sx={{
-      py: { xs: 2, sm: 3 },
-      px: 2,
-      mt: 'auto',
-      bgcolor: 'primary.100',
-    }}
-  >
+  <Box component="footer" sx={styles.footer}>
     <Container maxWidth="sm" sx={{ textAlign: 'center' }}>
-      <Box
-        sx={{
-          display: { sm: 'flex' },
-          justifyContent: 'center',
-          alignItems: 'end',
-          gap: '5px',
-        }}
-      >
+      <Box sx={styles.footerContentWrap}>
         <Copyright />
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'end',
-            gap: '5px',
-          }}
-        >
+        <Box sx={styles.wrap}>
           <Typography>Developed with</Typography>
-          <FavoriteIcon sx={{ color: 'extra.pink.400' }} />
+          <FavoriteIcon sx={styles.heart} />
           <Typography>by</Typography>
           <Link href="https://github.com/mariia-kovalova">Mariia Kovalova</Link>
         </Box>

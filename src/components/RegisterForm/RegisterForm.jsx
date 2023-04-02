@@ -3,13 +3,14 @@ import { registration } from 'redux/auth/operations';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { SignupSchema } from './inputValidation';
+import { SignupSchema } from './consts/inputValidation';
 import { getDefaultValues } from 'utils/getDefaultValues';
 
 import { Box } from '@mui/system';
 import { FormField } from 'components/FormField';
-import { inputsList } from './inputsList';
+import { inputsList } from './consts/inputsList';
 import { Button } from '@mui/material';
+import { styles } from './RegisterFormStyles';
 
 const defaultValues = getDefaultValues(inputsList);
 
@@ -38,17 +39,7 @@ export const RegisterForm = () => {
 
   const getErrorMassage = inputName => errors[inputName].message;
   return (
-    <Box
-      component="form"
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-        width: { xs: '330px', sm: '400px' },
-        margin: '0 auto',
-      }}
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <Box component="form" sx={styles.form} onSubmit={handleSubmit(onSubmit)}>
       {inputsList.map(({ inputName, type, id }) => (
         <FormField
           key={id}

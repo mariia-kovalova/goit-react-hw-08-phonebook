@@ -11,7 +11,7 @@ export const StyledList = styled(List)`
   margin: 0;
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledRouterLink = styled(Link)`
   text-decoration: none;
   color: white;
 `;
