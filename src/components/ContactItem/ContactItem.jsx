@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 import PropTypes from 'prop-types';
 
-import { Avatar, Box, IconButton, Typography } from '@mui/material';
+import { Avatar, Box, IconButton, Tooltip, Typography } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { ModalWindow } from 'components/ModalWindow';
@@ -29,12 +29,16 @@ export const ContactItem = memo(function ContactItem({ contact }) {
           </Box>
         </Box>
         <Box component="ul" sx={styles.btnList}>
-          <IconButton aria-label="update" onClick={handleToggleModal}>
-            <EditIcon />
-          </IconButton>
-          <IconButton aria-label="delete" onClick={handleDelete}>
-            <DeleteIcon />
-          </IconButton>
+          <Tooltip title="Update contact">
+            <IconButton aria-label="update" onClick={handleToggleModal}>
+              <EditIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Dlete contact">
+            <IconButton aria-label="delete" onClick={handleDelete}>
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
         </Box>
       </Box>
       {showModal && (

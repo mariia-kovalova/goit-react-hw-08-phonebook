@@ -38,6 +38,7 @@ export const FormField = ({
           type={type}
           label={capitalize(inputName)}
           aria-describedby={id}
+          required
           {...register(inputName)}
         />
       ) : (
@@ -46,6 +47,7 @@ export const FormField = ({
           type={showPassword ? 'text' : 'password'}
           label={capitalize(inputName)}
           aria-describedby={id}
+          required
           {...register(inputName)}
           endAdornment={
             <InputAdornment position="end">
