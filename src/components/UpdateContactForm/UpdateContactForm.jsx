@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { useDispatch } from 'react-redux';
 import { useContacts } from 'hooks';
 import { updateContact } from 'redux/contacts/operations';
@@ -9,15 +7,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { SignupSchema } from './consts/inputValidation';
 
 import { Box, Button } from '@mui/material';
-import { BasicSnackbar } from 'components/BasicSnackbar';
 import { FormField } from 'components/FormField';
 import { inputsList } from './consts/inputsList';
 
 import PropTypes from 'prop-types';
 import { styles } from './UpdateContactFormStyles';
+import { toast } from 'react-toastify';
 
-export const UpdateContactForm = ({ id, onModalClose, onUpdate }) => {
-  const [contactName, setContactName] = useState(null);
+export const UpdateContactForm = ({ id, onCloseModal }) => {
   const { contacts } = useContacts();
   const { name, number } = contacts.find(item => item.id === id);
   const {
@@ -36,56 +33,40 @@ export const UpdateContactForm = ({ id, onModalClose, onUpdate }) => {
 
   const onSubmit = data => {
     const isChanged = data.name === name && data.number === number;
-    if (isChanged) return onModalClose();
+    if (isChanged) return onCloseModal();
     const contactInfo = contacts.find(({ name }) => name === data.name);
-    if (contactInfo) return setContactName(contactInfo.name);
+    if (contactInfo) return toast(`${data.name} is already in your contacts`);
     dispatch(updateContact({ id, ...data }));
-    onUpdate();
+    toast(`${data.name} was updated`);
     reset();
-    onModalClose();
+    onCloseModal();
   };
 
   return (
-    <>
-      <Box component="form" sx={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        {inputsList.map(({ inputName, type, id }) => (
-          <FormField
-            key={id}
-            inputName={inputName}
-            type={type}
-            id={id}
-            register={register}
-            errors={errors}
-          />
-        ))}
-        <Box sx={styles.btnList}>
-          <Button type="submit" variant="contained">
-            Update Contact
-          </Button>
-          <Button
-            type="button"
-            variant="outlined"
-            onClick={() => onModalClose()}
-          >
-            Cancel
-          </Button>
-        </Box>
+    <Box component="form" sx={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      {inputsList.map(({ inputName, type, id }) => (
+        <FormField
+          key={id}
+          inputName={inputName}
+          type={type}
+          id={id}
+          register={register}
+          errors={errors}
+        />
+      ))}
+      <Box sx={styles.btnList}>
+        <Button type="submit" variant="contained">
+          Update Contact
+        </Button>
+        <Button type="button" variant="outlined" onClick={() => onCloseModal()}>
+          Cancel
+        </Button>
       </Box>
-      {contactName && (
-        <BasicSnackbar
-          onClose={() => setContactName(null)}
-          severity="warning"
-          variant="filled"
-        >
-          {contactName} is aready in contacts.
-        </BasicSnackbar>
-      )}
-    </>
+    </Box>
   );
 };
 
 UpdateContactForm.propTypes = {
   id: PropTypes.string.isRequired,
-  onModalClose: PropTypes.func.isRequired,
-  onUpdate: PropTypes.func.isRequired,
+  onCloseModal: PropTypes.func.isRequired,
 };

@@ -9,7 +9,7 @@ import { AddContactForm } from 'components/AddContactForm';
 const ContactsView = () => {
   const [showModal, setShowModal] = useState(false);
 
-  const toggleModal = () => setShowModal(!showModal);
+  const handleToggleModal = () => setShowModal(!showModal);
 
   return (
     <>
@@ -18,11 +18,11 @@ const ContactsView = () => {
       </Section>
       <Section>
         <ContactList />
-        <AddContactButton onOpenModal={toggleModal} />
+        <AddContactButton onOpenModal={handleToggleModal} />
       </Section>
       {showModal && (
-        <ModalWindow onModalClose={toggleModal}>
-          <AddContactForm onModalClose={toggleModal} />
+        <ModalWindow onCloseModal={handleToggleModal}>
+          <AddContactForm onCloseModal={handleToggleModal} />
         </ModalWindow>
       )}
     </>

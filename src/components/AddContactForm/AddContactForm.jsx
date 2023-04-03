@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
 import { useContacts } from 'hooks';
@@ -10,18 +8,16 @@ import { Schema } from './consts/inputValidation';
 import { getDefaultValues } from 'utils/getDefaultValues';
 
 import { Box, Button } from '@mui/material';
-import { BasicSnackbar } from 'components/BasicSnackbar';
 import { FormField } from 'components/FormField';
 import { inputsList } from './consts/inputsList';
 
 import PropTypes from 'prop-types';
 import { styles } from './AddContactFormStyles';
+import { toast } from 'react-toastify';
 
 const defaultValues = getDefaultValues(inputsList);
 
-export const AddContactForm = ({ onModalClose }) => {
-  const [contactName, setContactName] = useState(null);
-
+export const AddContactForm = ({ onCloseModal }) => {
   const {
     register,
     formState: { errors },
@@ -36,51 +32,37 @@ export const AddContactForm = ({ onModalClose }) => {
 
   const onSubmit = data => {
     const contactInfo = contacts.find(({ name }) => name === data.name);
-    if (contactInfo) return setContactName(contactInfo.name);
+    if (contactInfo) return toast(`${data.name} is already in your contacts`);
     dispatch(addContact(data));
+    toast(`${data.name} was added to your contacts`);
     reset();
-    onModalClose();
+    onCloseModal();
   };
 
   return (
-    <>
-      <Box component="form" sx={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        {inputsList.map(({ inputName, type, id }) => (
-          <FormField
-            key={id}
-            inputName={inputName}
-            type={type}
-            id={id}
-            register={register}
-            errors={errors}
-          />
-        ))}
-        <Box sx={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
-          <Button type="submit" variant="contained">
-            Add Contact
-          </Button>
-          <Button
-            type="button"
-            variant="outlined"
-            onClick={() => onModalClose()}
-          >
-            Cancel
-          </Button>
-        </Box>
+    <Box component="form" sx={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      {inputsList.map(({ inputName, type, id }) => (
+        <FormField
+          key={id}
+          inputName={inputName}
+          type={type}
+          id={id}
+          register={register}
+          errors={errors}
+        />
+      ))}
+      <Box sx={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+        <Button type="submit" variant="contained">
+          Add Contact
+        </Button>
+        <Button type="button" variant="outlined" onClick={() => onCloseModal()}>
+          Cancel
+        </Button>
       </Box>
-      {contactName && (
-        <BasicSnackbar
-          onClose={() => setContactName(null)}
-          severity="warning"
-          variant="filled"
-        >
-          {contactName} is aready in contacts.
-        </BasicSnackbar>
-      )}
-    </>
+    </Box>
   );
 };
 
 AddContactForm.propTypes = {
-  onModalClose: PropTypes.func.isRequired,
+  onCloseModal: PropTypes.func.isRequired,
 };
