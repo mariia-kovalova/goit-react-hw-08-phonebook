@@ -7,7 +7,7 @@ export const styles = {
   },
   userEmail: { display: { xs: 'none', md: 'block' } },
   logOutBtn: {
-    display: { xs: 'none', md: 'block' },
+    display: { xs: 'none', md: 'flex' },
     color: 'common.white',
   },
 };

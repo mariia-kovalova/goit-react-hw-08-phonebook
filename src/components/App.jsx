@@ -58,8 +58,6 @@ export const App = () => {
 
 // ideas:
 
-// snacks -  instead of alerts + on AddSuccess + onDeleteSuccess
-
 // показувати помилку при логіні/реєстрації - bad request- обробка помилок
 // темна тема
 // user page view

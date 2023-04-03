@@ -1,7 +1,7 @@
 export const styles = {
   item: {
     padding: '10px',
-    bgcolor: 'primary.50',
+    bgcolor: 'extra.contactItemBGC',
     borderRadius: '4px',
     display: 'flex',
     alignItems: 'center',

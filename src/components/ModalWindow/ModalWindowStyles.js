@@ -1,7 +1,7 @@
 export const styles = {
   wrap: {
     display: 'inline-flex',
-    bgcolor: 'common.white',
+    bgcolor: 'extra.modalBGC',
     padding: '20px',
     borderRadius: '3px',
     position: 'absolute',

@@ -4,6 +4,9 @@ export const styles = {
     justifyContent: 'space-between',
     minHeight: '64px',
   },
-  menuIconBtn: { mr: 2, display: { md: 'none' } },
+  iconBtnWrap: {
+    display: { xs: 'flex', md: 'none' },
+    alignItems: 'center',
+  },
   navbarWrap: { display: 'flex' },
 };

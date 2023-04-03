@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { selectFilter } from 'redux/filter/selectors';
 import avatarsList from 'data/avatarsList.json';
-import { getRandomAvatar } from 'utils/getRandomAvatar';
+import { getAvatar } from 'utils/getAvatar';
 
 export const selectContactsItems = state => state.contacts.items;
 export const selectContactsIsLoading = state => state.contacts.isLoading;
@@ -12,7 +12,7 @@ export const selectContactsItemsWithAvatar = createSelector(
   contacts => {
     return contacts.map(contact => ({
       ...contact,
-      avatar: getRandomAvatar(avatarsList),
+      avatar: getAvatar(contacts.length, avatarsList),
     }));
   }
 );

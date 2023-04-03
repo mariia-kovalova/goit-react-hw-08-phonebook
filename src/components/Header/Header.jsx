@@ -20,15 +20,17 @@ export const Header = () => {
     <AppBar position="relative">
       <Container>
         <Box sx={styles.headerContentWrap}>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={styles.menuIconBtn}
-          >
-            <MenuIcon />
-          </IconButton>
+          <Box sx={styles.iconBtnWrap}>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
+
           {mobileOpen && <MobileMenu onMenuClose={handleDrawerToggle} />}
           <Logo />
           <Box sx={styles.navbarWrap}>

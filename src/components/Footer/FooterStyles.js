@@ -3,7 +3,8 @@ export const styles = {
     py: { xs: 2, sm: 3 },
     px: 2,
     mt: 'auto',
-    bgcolor: 'primary.100',
+    textAlign: 'center',
+    bgcolor: 'extra.footerBGC',
   },
   footerContentWrap: {
     display: { sm: 'flex' },
