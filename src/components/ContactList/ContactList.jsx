@@ -27,7 +27,6 @@ export const ContactList = () => {
 
   return (
     <>
-      {isLoading && <Loader />}
       {showList && (
         <List sx={styles.list}>
           {contacts.map(contact => (
@@ -35,6 +34,7 @@ export const ContactList = () => {
           ))}
         </List>
       )}
+      {isLoading && <Loader />}
       {showError && <InfoText>Sorry, something went wrong</InfoText>}
       {empty && <InfoText>Your contacts list is empty</InfoText>}
       {noMatches && <InfoText>Sorry, there is no such contacts</InfoText>}

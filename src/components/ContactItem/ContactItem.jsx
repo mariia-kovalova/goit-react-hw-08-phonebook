@@ -9,14 +9,17 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { ModalWindow } from 'components/ModalWindow';
 import { UpdateContactForm } from 'components/UpdateContactForm';
 import { styles } from './ContactItemStyles';
+import { BasicSnackbar } from 'components/BasicSnackbar';
 
 export const ContactItem = memo(function ContactItem({ contact }) {
   const [showModal, setShowModal] = useState(false);
+  const [updateSuccess, setUpdatedSuccess] = useState(false);
   const { id, name, number, avatar } = contact;
   const dispatch = useDispatch();
 
   const handleToggleModal = () => setShowModal(!showModal);
   const handleDelete = () => dispatch(deleteContact(id));
+  const handleUpdate = () => setUpdatedSuccess(true);
 
   return (
     <>
@@ -43,8 +46,21 @@ export const ContactItem = memo(function ContactItem({ contact }) {
       </Box>
       {showModal && (
         <ModalWindow onModalClose={handleToggleModal}>
-          <UpdateContactForm id={id} onModalClose={handleToggleModal} />
+          <UpdateContactForm
+            id={id}
+            onModalClose={handleToggleModal}
+            onUpdate={handleUpdate}
+          />
         </ModalWindow>
+      )}
+      {updateSuccess && (
+        <BasicSnackbar
+          onClose={() => setUpdatedSuccess(false)}
+          severity="success"
+          variant="filled"
+        >
+          The contact was successfully updated
+        </BasicSnackbar>
       )}
     </>
   );

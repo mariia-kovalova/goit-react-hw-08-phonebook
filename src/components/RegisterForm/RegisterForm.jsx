@@ -32,12 +32,6 @@ export const RegisterForm = () => {
     reset();
   };
 
-  const isError = inputName => {
-    if (errors[inputName]) return true;
-    return false;
-  };
-
-  const getErrorMassage = inputName => errors[inputName].message;
   return (
     <Box component="form" sx={styles.form} onSubmit={handleSubmit(onSubmit)}>
       {inputsList.map(({ inputName, type, id }) => (
@@ -47,8 +41,7 @@ export const RegisterForm = () => {
           type={type}
           id={id}
           register={register}
-          isError={isError}
-          getErrorMassage={getErrorMassage}
+          errors={errors}
         />
       ))}
       <Button type="submit" fullWidth variant="contained">

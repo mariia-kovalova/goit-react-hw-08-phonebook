@@ -7,17 +7,17 @@ const nameRegExp = new RegExp(
 const numberRegExp =
   /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
 
-export const SignupSchema = Yup.object().shape({
+export const Schema = Yup.object().shape({
   name: Yup.string()
+    .required('This field is required')
     .matches(
       nameRegExp,
       "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-    )
-    .required(),
+    ),
   number: Yup.string()
+    .required('This field is required')
     .matches(
       numberRegExp,
       'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
-    )
-    .required(),
+    ),
 });

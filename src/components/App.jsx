@@ -58,8 +58,7 @@ export const App = () => {
 
 // ideas:
 
-// cards mui for contacts
-// toast instead og alerts + on Success
+// snacks -  instead of alerts + on AddSuccess + onDeleteSuccess
 
 // показувати помилку при логіні/реєстрації - bad request- обробка помилок
 // темна тема

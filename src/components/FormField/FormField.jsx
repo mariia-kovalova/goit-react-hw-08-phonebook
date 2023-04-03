@@ -7,18 +7,14 @@ import {
   InputAdornment,
   InputLabel,
   OutlinedInput,
+  Typography,
 } from '@mui/material';
 import { useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { ErrorMessage } from '@hookform/error-message';
+import { styles } from './FormFieldStyles';
 
-export const FormField = ({
-  inputName,
-  type,
-  id,
-  register,
-  isError,
-  getErrorMassage,
-}) => {
+export const FormField = ({ inputName, type, id, register, errors }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => {
@@ -29,44 +25,55 @@ export const FormField = ({
     event.preventDefault();
   };
 
+  const isError = inputName => {
+    if (errors[inputName]) return true;
+    return false;
+  };
+
   return (
-    <FormControl error={isError(inputName)}>
-      <InputLabel htmlFor={id}>{capitalize(inputName)}</InputLabel>
-      {type !== 'password' ? (
-        <OutlinedInput
+    <>
+      <FormControl error={isError(inputName)}>
+        <InputLabel htmlFor={id}>{capitalize(inputName)}</InputLabel>
+        {type !== 'password' ? (
+          <OutlinedInput
+            id={id}
+            type={type}
+            label={capitalize(inputName)}
+            aria-describedby={id}
+            {...register(inputName, { required: 'This field is required.' })}
+          />
+        ) : (
+          <OutlinedInput
+            id={id}
+            type={showPassword ? 'text' : 'password'}
+            label={capitalize(inputName)}
+            aria-describedby={id}
+            {...register(inputName, { required: 'This field is required.' })}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        )}
+        <FormHelperText
+          component={ErrorMessage}
           id={id}
-          type={type}
-          label={capitalize(inputName)}
-          aria-describedby={id}
-          required
-          {...register(inputName)}
+          errors={errors}
+          name={inputName}
+          render={({ message }) => (
+            <Typography sx={styles.error}>{message}</Typography>
+          )}
         />
-      ) : (
-        <OutlinedInput
-          id={id}
-          type={showPassword ? 'text' : 'password'}
-          label={capitalize(inputName)}
-          aria-describedby={id}
-          required
-          {...register(inputName)}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {showPassword ? <Visibility /> : <VisibilityOff />}
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-      )}
-      {isError(inputName) && (
-        <FormHelperText id={id}>{getErrorMassage(inputName)}</FormHelperText>
-      )}
-    </FormControl>
+      </FormControl>
+    </>
   );
 };
 
@@ -75,6 +82,4 @@ FormField.propTypes = {
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   register: PropTypes.func.isRequired,
-  isError: PropTypes.func.isRequired,
-  getErrorMassage: PropTypes.func.isRequired,
 };

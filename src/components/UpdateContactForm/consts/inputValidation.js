@@ -9,15 +9,15 @@ const numberRegExp =
 
 export const SignupSchema = Yup.object().shape({
   name: Yup.string()
+    .required('This field is required')
     .matches(
       nameRegExp,
       "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-    )
-    .required(),
+    ),
   number: Yup.string()
+    .required('This field is required')
     .matches(
       numberRegExp,
       'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
-    )
-    .required(),
+    ),
 });

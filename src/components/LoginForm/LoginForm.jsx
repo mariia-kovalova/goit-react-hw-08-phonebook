@@ -3,7 +3,7 @@ import { logIn } from 'redux/auth/operations';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { SignupSchema } from './consts/inputValidation';
+import { Schema } from './consts/inputValidation';
 import { getDefaultValues } from 'utils/getDefaultValues';
 
 import { Box, Button } from '@mui/material';
@@ -20,7 +20,7 @@ export const LoginForm = () => {
     handleSubmit,
     reset,
   } = useForm({
-    resolver: yupResolver(SignupSchema),
+    resolver: yupResolver(Schema),
     defaultValues,
   });
   const dispatch = useDispatch();
@@ -30,12 +30,6 @@ export const LoginForm = () => {
     reset();
   };
 
-  const isError = inputName => {
-    if (errors[inputName]) return true;
-    return false;
-  };
-
-  const getErrorMassage = inputName => errors[inputName].message;
   return (
     <Box component="form" sx={styles.form} onSubmit={handleSubmit(onSubmit)}>
       {inputsList.map(({ inputName, type, id }) => (
@@ -45,8 +39,7 @@ export const LoginForm = () => {
           type={type}
           id={id}
           register={register}
-          isError={isError}
-          getErrorMassage={getErrorMassage}
+          errors={errors}
         />
       ))}
       <Button type="submit" fullWidth variant="contained">
