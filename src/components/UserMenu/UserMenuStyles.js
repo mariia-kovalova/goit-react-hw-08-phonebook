@@ -4,6 +4,7 @@ export const styles = {
     alignItems: 'center',
     gap: '10px',
     justifyContent: 'space-between',
+    padding: { xs: '0', md: '7px' },
   },
   userEmail: { display: { xs: 'none', md: 'block' } },
   logOutBtn: {

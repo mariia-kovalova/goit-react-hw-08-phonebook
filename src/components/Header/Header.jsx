@@ -49,6 +49,7 @@ export const Header = () => {
           {mobileOpen && <MobileMenu onMenuClose={handleToggleDrawer} />}
           <Logo />
           <Box sx={styles.navbarWrap}>
+            <Navigation />
             <Box sx={styles.modeIconBtnWrap}>
               <Tooltip
                 title={`switch to ${mode === 'light' ? 'dark' : 'light'} mode`}
@@ -58,7 +59,6 @@ export const Header = () => {
                 </IconButton>
               </Tooltip>
             </Box>
-            <Navigation />
             {isLoggedIn && <UserMenu />}
           </Box>
         </Box>

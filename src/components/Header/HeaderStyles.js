@@ -9,8 +9,9 @@ export const styles = {
     alignItems: 'center',
   },
   modeIconBtnWrap: {
-    display: { xs: 'none', md: 'flex' },
+    display: 'flex',
     alignItems: 'center',
+    marginRight: { xs: '10px', md: '0' },
   },
   navbarWrap: { display: 'flex' },
 };

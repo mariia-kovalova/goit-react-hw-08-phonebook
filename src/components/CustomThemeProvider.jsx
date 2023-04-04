@@ -26,8 +26,6 @@ export const CustomThemeProvider = ({ children }) => {
   const mode = useSelector(selectTheme);
   const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 
-  console.log(theme);
-
   useEffect(() => {
     dispatch(refreshTheme());
   }, [dispatch]);
