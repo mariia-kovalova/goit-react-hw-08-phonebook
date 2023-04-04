@@ -58,6 +58,8 @@ export const App = () => {
 
 // ideas:
 
+//list - info text - color
+
 // показувати помилку при логіні/реєстрації - bad request- обробка помилок
 // темна тема
 // user page view

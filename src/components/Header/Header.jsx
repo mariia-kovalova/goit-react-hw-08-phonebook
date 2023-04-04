@@ -1,18 +1,33 @@
 import { useState } from 'react';
 import { useAuth } from 'hooks';
-import { AppBar, Box, Container, IconButton } from '@mui/material';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTheme } from 'redux/theme/selectors';
+
 import { Logo } from 'components/Logo';
 import { Navigation } from 'components/Navigation';
 import { UserMenu } from 'components/UserMenu';
-import MenuIcon from '@mui/icons-material/Menu';
 import { MobileMenu } from 'components/MobileMenu';
+
+import { AppBar, Box, Container, IconButton, Tooltip } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+
 import { styles } from './HeaderStyles';
+import { toggleTheme } from 'redux/theme/operations';
 
 export const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { isLoggedIn } = useAuth();
+  const mode = useSelector(selectTheme);
+  const dispatch = useDispatch();
 
-  const handleDrawerToggle = () => {
+  const handleToggleMode = () => {
+    dispatch(toggleTheme());
+  };
+
+  const handleToggleDrawer = () => {
     setMobileOpen(!mobileOpen);
   };
 
@@ -20,20 +35,29 @@ export const Header = () => {
     <AppBar position="relative">
       <Container>
         <Box sx={styles.headerContentWrap}>
-          <Box sx={styles.iconBtnWrap}>
+          <Box sx={styles.menuIconBtnWrap}>
             <IconButton
               color="inherit"
               aria-label="open drawer"
               edge="start"
-              onClick={handleDrawerToggle}
+              onClick={handleToggleDrawer}
             >
               <MenuIcon />
             </IconButton>
           </Box>
 
-          {mobileOpen && <MobileMenu onMenuClose={handleDrawerToggle} />}
+          {mobileOpen && <MobileMenu onMenuClose={handleToggleDrawer} />}
           <Logo />
           <Box sx={styles.navbarWrap}>
+            <Box sx={styles.modeIconBtnWrap}>
+              <Tooltip
+                title={`switch to ${mode === 'light' ? 'dark' : 'light'} mode`}
+              >
+                <IconButton onClick={handleToggleMode} color="inherit">
+                  {mode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
+                </IconButton>
+              </Tooltip>
+            </Box>
             <Navigation />
             {isLoggedIn && <UserMenu />}
           </Box>

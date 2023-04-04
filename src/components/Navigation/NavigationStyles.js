@@ -4,6 +4,7 @@ export const styles = {
     listStyle: 'none',
     display: 'flex',
     alignItems: 'center',
-    margin: 'auto 0',
+    margin: '0',
+    padding: '0',
   },
 };
