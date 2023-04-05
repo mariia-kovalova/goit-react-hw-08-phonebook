@@ -12,7 +12,12 @@ export const Footer = () => (
           <Typography>Developed with</Typography>
           <FavoriteIcon sx={styles.heart} />
           <Typography>by</Typography>
-          <Link href="https://github.com/mariia-kovalova" color="inherit">
+          <Link
+            href="https://github.com/mariia-kovalova"
+            target="_blank"
+            rel="noreferrer noopener nofollow"
+            color="inherit"
+          >
             Mariia Kovalova
           </Link>
         </Box>
