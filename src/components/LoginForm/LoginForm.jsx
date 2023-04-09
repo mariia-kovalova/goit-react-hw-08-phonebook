@@ -7,7 +7,7 @@ import { Schema } from './consts/inputValidation';
 import { getDefaultValues } from 'utils/getDefaultValues';
 
 import { Box, Button } from '@mui/material';
-import { FormField } from 'components/FormField';
+import { FormField } from 'components/common/FormField';
 import { inputsList } from './consts/inputsList';
 import { styles } from './LoginFormStyles';
 

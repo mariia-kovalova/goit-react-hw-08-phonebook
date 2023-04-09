@@ -4,4 +4,5 @@ export const styles = {
     justifyContent: 'center',
     alignItems: 'center',
   },
+  input: { width: '350px' },
 };

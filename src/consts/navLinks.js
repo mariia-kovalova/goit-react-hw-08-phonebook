@@ -1,22 +1,29 @@
-export const linksList = isLoggedIn => {
+import {
+  CONTACTS_ROUTE,
+  HOME_ROUTE,
+  LOGIN_ROUTE,
+  REGISTER_ROUTE,
+} from 'consts/routes';
+
+export const navLinks = isLoggedIn => {
   return [
     {
-      path: '/',
+      path: HOME_ROUTE,
       page: 'Home',
       render: true,
     },
     {
-      path: '/contacts',
+      path: CONTACTS_ROUTE,
       page: 'Contacts',
       render: isLoggedIn,
     },
     {
-      path: '/register',
+      path: REGISTER_ROUTE,
       page: 'Register',
       render: !isLoggedIn,
     },
     {
-      path: '/login',
+      path: LOGIN_ROUTE,
       page: 'Log in',
       render: !isLoggedIn,
     },

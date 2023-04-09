@@ -1,7 +1,8 @@
 import { useAuth } from 'hooks';
+import { navLinks } from 'consts/navLinks';
+
 import { Box, ListItemButton } from '@mui/material';
 import { StyledNavLink } from './Navigation.styled';
-import { linksList } from './consts/linksList';
 import { styles } from './NavigationStyles';
 
 export const Navigation = () => {
@@ -9,7 +10,7 @@ export const Navigation = () => {
   return (
     <Box component="nav" sx={styles.nav}>
       <Box component="ul" sx={styles.list}>
-        {linksList(isLoggedIn).map(({ path, page, render }) =>
+        {navLinks(isLoggedIn).map(({ path, page, render }) =>
           render ? (
             <Box component="li" key={page}>
               <ListItemButton component={StyledNavLink} to={path}>

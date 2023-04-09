@@ -1,12 +1,17 @@
-import { Section } from 'components/Section';
+import { Helmet } from 'react-helmet';
+import { Section } from 'components/common/Section';
 import { Box, Avatar, Link, Typography } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { withPrivatRedirect } from 'hoc/withPrivatRedirect';
 
 import { LoginForm } from 'components/LoginForm';
-import { StyledRouterLink } from 'components/GlobalStyles.styled';
+import { StyledRouterLink } from 'components/common/StyledRouterLink/StyledRouterLink';
 
-const LoginView = () => {
-  return (
+const LoginView = () => (
+  <>
+    <Helmet>
+      <title>Log In</title>
+    </Helmet>
     <Section>
       <Box
         sx={{
@@ -28,7 +33,7 @@ const LoginView = () => {
         </Link>
       </Box>
     </Section>
-  );
-};
+  </>
+);
 
-export default LoginView;
+export default withPrivatRedirect(LoginView, '/contacts');

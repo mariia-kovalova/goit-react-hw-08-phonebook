@@ -1,5 +1,5 @@
 import { Box, Container, Link, Typography } from '@mui/material';
-import { Copyright } from 'components/Copyright';
+import { Copyright } from 'components/common/Copyright';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { styles } from './FooterStyles';
 

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export const StyledNavLink = styled(NavLink)`
   display: flex;
   text-decoration: none;
-  color: white;
+  color: #fff;
 
   &.active {
     color: teal;

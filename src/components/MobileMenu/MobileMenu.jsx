@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
-import { linksList } from './consts/linksList';
+import { navLinks } from 'consts/navLinks';
 import PropTypes from 'prop-types';
 
 import {
@@ -40,7 +40,7 @@ export const MobileMenu = ({ onMenuClose }) => {
             <CloseIcon />
           </IconButton>
           <List>
-            {linksList(isLoggedIn).map(({ path, page, render }) =>
+            {navLinks(isLoggedIn).map(({ path, page, render }) =>
               render ? (
                 <Box component="li" key={page}>
                   <ListItemButton component={StyledNavLink} to={path}>

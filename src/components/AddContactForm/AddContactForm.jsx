@@ -8,7 +8,7 @@ import { Schema } from './consts/inputValidation';
 import { getDefaultValues } from 'utils/getDefaultValues';
 
 import { Box, Button } from '@mui/material';
-import { FormField } from 'components/FormField';
+import { FormField } from 'components/common/FormField';
 import { inputsList } from './consts/inputsList';
 
 import PropTypes from 'prop-types';
@@ -51,7 +51,7 @@ export const AddContactForm = ({ onCloseModal }) => {
           errors={errors}
         />
       ))}
-      <Box sx={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+      <Box sx={styles.btnList}>
         <Button type="submit" variant="contained">
           Add Contact
         </Button>

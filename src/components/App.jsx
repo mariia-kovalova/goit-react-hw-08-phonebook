@@ -1,14 +1,18 @@
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { RestrictedRoute } from './RestrictedRoute';
-import { PrivateRoute } from './PrivatRoute';
 
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks';
 import { refreshUser } from 'redux/auth/operations';
 
-import { SharedLayout } from './SharedLayout';
-import { Loader } from './Loader';
+import { SharedLayout } from 'components/SharedLayout';
+import { Loader } from './common/Loader';
+import {
+  CONTACTS_ROUTE,
+  HOME_ROUTE,
+  LOGIN_ROUTE,
+  REGISTER_ROUTE,
+} from 'consts/routes';
 
 const HomeView = lazy(() => import('views/HomeView'));
 const RegisterView = lazy(() => import('views/RegisterView'));
@@ -27,29 +31,11 @@ export const App = () => {
     <Loader type="dark" />
   ) : (
     <Routes>
-      <Route path="/" element={<SharedLayout />}>
+      <Route path={HOME_ROUTE} element={<SharedLayout />}>
         <Route index element={<HomeView />} />
-        <Route
-          path="register"
-          element={
-            <RestrictedRoute
-              redirectTo="/contacts"
-              component={<RegisterView />}
-            />
-          }
-        />
-        <Route
-          path="login"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginView />} />
-          }
-        />
-        <Route
-          path="contacts"
-          element={
-            <PrivateRoute redirectTo="/login" component={<ContactsView />} />
-          }
-        />
+        <Route path={REGISTER_ROUTE} element={<RegisterView />} />
+        <Route path={LOGIN_ROUTE} element={<LoginView />} />
+        <Route path={CONTACTS_ROUTE} element={<ContactsView />} />
         <Route path="*" element={<HomeView />} />
       </Route>
     </Routes>
@@ -58,6 +44,10 @@ export const App = () => {
 
 // ideas:
 
+// styles for views (separate folder)
+// firebase - for "favourite contacts"
+// env for firebase usage ?
+// unwrap - обробка помилок
 // показувати помилку при логіні/реєстрації - bad request- обробка помилок
 // user page view
 // log in with google

@@ -4,7 +4,7 @@ import { useAuth } from 'hooks';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTheme } from 'redux/theme/selectors';
 
-import { Logo } from 'components/Logo';
+import { Logo } from 'components/common/Logo';
 import { Navigation } from 'components/Navigation';
 import { UserMenu } from 'components/UserMenu';
 import { MobileMenu } from 'components/MobileMenu';
@@ -16,6 +16,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 import { styles } from './HeaderStyles';
 import { toggleTheme } from 'redux/theme/operations';
+import { DARK, LIGHT } from 'consts/theme';
 
 export const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -52,10 +53,10 @@ export const Header = () => {
             <Navigation />
             <Box sx={styles.modeIconBtnWrap}>
               <Tooltip
-                title={`switch to ${mode === 'light' ? 'dark' : 'light'} mode`}
+                title={`switch to ${mode === LIGHT ? DARK : LIGHT} mode`}
               >
                 <IconButton onClick={handleToggleMode} color="inherit">
-                  {mode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
+                  {mode === LIGHT ? <Brightness4Icon /> : <Brightness7Icon />}
                 </IconButton>
               </Tooltip>
             </Box>

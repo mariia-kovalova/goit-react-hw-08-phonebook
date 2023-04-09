@@ -7,7 +7,7 @@ import { SignupSchema } from './consts/inputValidation';
 import { getDefaultValues } from 'utils/getDefaultValues';
 
 import { Box } from '@mui/system';
-import { FormField } from 'components/FormField';
+import { FormField } from 'components/common/FormField';
 import { inputsList } from './consts/inputsList';
 import { Button } from '@mui/material';
 import { styles } from './RegisterFormStyles';

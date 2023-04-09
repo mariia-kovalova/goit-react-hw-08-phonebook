@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Avatar, Box, IconButton, Tooltip, Typography } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { ModalWindow } from 'components/ModalWindow';
+import { ModalWindow } from 'components/common/ModalWindow';
 import { UpdateContactForm } from 'components/UpdateContactForm';
 import { toast } from 'react-toastify';
 import { styles } from './ContactItemStyles';

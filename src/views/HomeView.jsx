@@ -1,8 +1,12 @@
+import { Helmet } from 'react-helmet';
 import { Typography } from '@mui/material';
-import { Section } from 'components/Section';
+import { Section } from 'components/common/Section';
 
-const HomeView = () => {
-  return (
+const HomeView = () => (
+  <>
+    <Helmet>
+      <title>PhoneBook</title>
+    </Helmet>
     <Section>
       <Typography
         sx={{
@@ -16,7 +20,7 @@ const HomeView = () => {
         Welcome to your PhoneBook
       </Typography>
     </Section>
-  );
-};
+  </>
+);
 
 export default HomeView;

@@ -1,11 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { DARK, LIGHT } from 'consts/theme';
 
 export const refreshTheme = createAsyncThunk(
   'theme/refresh',
   async (_, { getState }) => {
     const state = getState();
     const persistedMode = state.theme.mode;
-    return persistedMode === null ? 'light' : persistedMode;
+    return persistedMode === null ? LIGHT : persistedMode;
   }
 );
 
@@ -14,7 +15,7 @@ export const toggleTheme = createAsyncThunk(
   async (_, { getState }) => {
     const state = getState();
     const persistedMode = state.theme.mode;
-    return persistedMode === 'light' ? 'dark' : 'light';
+    return persistedMode === LIGHT ? DARK : LIGHT;
   }
 );
 

@@ -5,6 +5,7 @@ import { selectTheme } from 'redux/theme/selectors';
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import { grey, pink, teal } from '@mui/material/colors';
 import { refreshTheme } from 'redux/theme/operations';
+import { LIGHT } from 'consts/theme';
 
 const getDesignTokens = mode => ({
   palette: {
@@ -13,10 +14,9 @@ const getDesignTokens = mode => ({
     secondary: teal,
     extra: {
       pink: pink,
-
-      contactItemBGC: mode === 'light' ? teal[50] : grey[600],
-      footerBGC: mode === 'light' ? teal[100] : grey[800],
-      modalBGC: mode === 'light' ? '#fff' : grey[900],
+      contactItemBGC: mode === LIGHT ? teal[50] : grey[600],
+      footerBGC: mode === LIGHT ? teal[100] : grey[800],
+      modalBGC: mode === LIGHT ? '#fff' : grey[900],
     },
   },
 });

@@ -13,7 +13,7 @@ export const Filter = () => {
 
   return (
     <Box sx={styles.wrap}>
-      <FormControl sx={{ width: '350px' }}>
+      <FormControl sx={styles.input}>
         <InputLabel htmlFor={filterId}>Search</InputLabel>
         <OutlinedInput
           id={filterId}

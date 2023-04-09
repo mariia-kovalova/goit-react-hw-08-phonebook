@@ -1,11 +1,16 @@
+import { withPrivatRedirect } from 'hoc/withPrivatRedirect';
 import { Box, Avatar, Link, Typography } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { Section } from 'components/Section';
+import { Section } from 'components/common/Section';
 import { RegisterForm } from 'components/RegisterForm';
-import { StyledRouterLink } from 'components/GlobalStyles.styled';
+import { StyledRouterLink } from 'components/common/StyledRouterLink/StyledRouterLink';
+import { Helmet } from 'react-helmet';
 
-const RegisterView = () => {
-  return (
+const RegisterView = () => (
+  <>
+    <Helmet>
+      <title>Register</title>
+    </Helmet>
     <Section>
       <Box
         sx={{
@@ -27,7 +32,7 @@ const RegisterView = () => {
         </Link>
       </Box>
     </Section>
-  );
-};
+  </>
+);
 
-export default RegisterView;
+export default withPrivatRedirect(RegisterView, '/contacts');

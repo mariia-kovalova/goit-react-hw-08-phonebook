@@ -5,8 +5,8 @@ import { useContacts } from 'hooks';
 import { selectFilter } from 'redux/filter/selectors';
 
 import { ContactItem } from 'components/ContactItem';
-import { Loader } from 'components/Loader';
-import { InfoText } from 'components/InfoText';
+import { Loader } from 'components/common/Loader';
+import { InfoText } from 'components/common/InfoText';
 import { List } from '@mui/material';
 import { styles } from './ContactListStyles';
 

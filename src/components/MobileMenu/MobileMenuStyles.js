@@ -1,6 +1,6 @@
 export const styles = {
   drawer: {
-    display: { xs: 'block', sm: 'none' },
+    display: { xs: 'block', md: 'none' },
     '& .MuiDrawer-paper': { boxSizing: 'border-box', width: '280px' },
   },
   wrap: { textAlign: 'center', position: 'relative', paddingTop: '25px' },

@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { SignupSchema } from './consts/inputValidation';
 
 import { Box, Button } from '@mui/material';
-import { FormField } from 'components/FormField';
+import { FormField } from 'components/common/FormField';
 import { inputsList } from './consts/inputsList';
 
 import PropTypes from 'prop-types';
