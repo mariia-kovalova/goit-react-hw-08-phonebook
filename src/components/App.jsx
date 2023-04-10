@@ -44,10 +44,10 @@ export const App = () => {
 
 // ideas:
 
-// styles for views (separate folder)
+// user page view
+// папки як модулі
+
+// log in with google
+
 // firebase - for "favourite contacts"
 // env for firebase usage ?
-// unwrap - обробка помилок
-// показувати помилку при логіні/реєстрації - bad request- обробка помилок
-// user page view
-// log in with google

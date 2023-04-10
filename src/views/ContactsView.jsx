@@ -1,12 +1,14 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { withAuthRedirect } from 'hoc/withAuthRedirect';
+import { LOGIN_ROUTE } from 'consts/routes';
+
 import { Section } from 'components/common/Section';
 import { ContactList } from 'components/ContactList';
 import { Filter } from 'components/Filter';
 import { AddContactButton } from 'components/AddContactButton';
 import { ModalWindow } from 'components/common/ModalWindow';
 import { AddContactForm } from 'components/AddContactForm';
-import { Helmet } from 'react-helmet';
 
 const ContactsView = () => {
   const [showModal, setShowModal] = useState(false);
@@ -34,4 +36,4 @@ const ContactsView = () => {
   );
 };
 
-export default withAuthRedirect(ContactsView, '/login');
+export default withAuthRedirect(ContactsView, LOGIN_ROUTE);
